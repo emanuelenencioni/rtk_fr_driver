@@ -1,0 +1,12 @@
+get_filename_component(MIXER_INTERFACE_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+include(CMakeFindDependencyMacro)
+
+list(APPEND CMAKE_MODULE_PATH ${MIXER_INTERFACE_CMAKE_DIR})
+#list(REMOVE_AT CMAKE_MODULE_PATH -1)
+
+if(NOT TARGET mixer_interface::mixer_interface)
+    include("${MIXER_INTERFACE_CMAKE_DIR}/mixer_interface-targets.cmake")
+endif()
+
+set(MIXER_INTERFACE_LIBRARIES mixer_interface::mixer_interface)
+set(MIXER_INTERFACE_INCLUDE_DIRS "/usr/local/mixer_interface/include")
