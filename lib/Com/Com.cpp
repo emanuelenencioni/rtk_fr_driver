@@ -39,10 +39,10 @@ void Com::OpenUart()
 
 	//iUart0Filestream = open("/dev/ttyAMA0", O_RDWR | O_NOCTTY | O_NDELAY);	//Raspberry Port //Open in non blocking read/write mode //	/dev/ttyAMA0
     //iUart0Filestream = open("/dev/ttyTHS1", O_RDWR | O_NOCTTY);// | O_NDELAY);	//Jetson nano Port //Open in non blocking read/write mode //	/dev/ttyAMA0  
-    iUart0Filestream = open(this->portName.c_str(), O_RDWR | O_NOCTTY);
+    iUart0Filestream = open(portName.c_str(), O_RDWR | O_NOCTTY);
     if (iUart0Filestream == -1)
     {
-        std::cerr << "Error - Unable to open UART. Ensure it is not in use by another application\n";
+        std::cerr << "Error - Unable to open UART: " << portName << ". Ensure it is not in use by another application\n";
         return;
     }
 
@@ -69,7 +69,7 @@ void Com::OpenUart()
     // Svuota buffer
     tcflush(iUart0Filestream, TCIOFLUSH);
 
-    std::cout << "UART /dev/ttyTHS0 open in 8N1 mode, 460800 baud" << std::endl;
+    std::cout << "UART " << portName << " open in 8N1 mode, 460800 baud" << std::endl;
 }
 
 void Com::CloseUart(){
