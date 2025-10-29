@@ -8,6 +8,7 @@
 
 
 struct RXData{
+
    int HEADER;
    float Q0;
    float Q1;
@@ -110,7 +111,7 @@ class Com{
 	 int iRxInfoBin[8];
 	 int iRebootCount;
 	       
-	 Com(); 
+	 Com(std::string portName="/dev/ttyTHS1"); 
     int* uartComTx(int l_iOffsetWrite ,int l_iPMin, int l_iPMax, double l_dRD, bool l_bComClose, bool l_bStatus, commandsLl l_dU); 
     RXData uartComRx();
     void uartComRxPrint(int l_iFrameSize);
@@ -119,9 +120,11 @@ class Com{
     void printReceivedFrame(int* l_ucRxBuffer);
     uint8_t iHeader, iFooter;
 	 int iToHighLevelHeader, iToHighLevelFooter;
-	 
+	 std::string portName;
+
 	 ////////////
 	 //Qui ci sono le nuove funzioni
+
 	 RXData RxFrame;
 	 int iBytesRead = 0;
 	 uint8_t ucRxBuffer[233];
