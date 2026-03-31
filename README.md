@@ -4,8 +4,7 @@ C++ library that allows you to communicate with the Mixer board.
 
 ## Getting the code
 
-Clone the repository with "git clone https://dartleague.ddns.net:82/lbigazzi/comdemo_/-/tree/mixer_lib_ids"
-
+Clone the repository with "git clone https://github.com/emanuelenencioni/rtk_fr_driver"
 
 ## Build
 
